@@ -1,0 +1,15 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav #sidenav class="app-sidenav" [mode]="isScreenSm? 'over':'side'" mat-elevation-z10 [opened]="!isScreenSm" >
+   
+    <button mat-stroked-button style="padding:10px 30px; border-radius:40px; margin: 10px;" (click)="openDialog()">Create</button>
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar [(selected)]="selected" (selectedChange)="filterApplyEvent($event)"></mat-calendar>
+    </mat-card>
+    <p style="margin: 20px 3px;" ><span style="color:#33A852">APPOINTMENT TILL DATE:</span>&nbsp; <span style="color:#1E65C8">{{selected == undefined? 'NOT SELECTED':(selected | date: 'short')}}</span></p>
+  </mat-sidenav>
+  <div class="app-sidenav-content">
+    <app-toolbar (toggleSideNav)="sidenav.toggle()"></app-toolbar>
+    <router-outlet></router-outlet>
+    
+  </div>
+</mat-sidenav-container>

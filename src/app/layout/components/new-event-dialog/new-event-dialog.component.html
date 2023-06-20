@@ -1,0 +1,47 @@
+<div mat-dialog-title class="flex flex-row space-between">
+  <h2>Add new event</h2>
+  <button mat-icon-button (click)="dismiss()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content [formGroup]="fg">
+  <div class="flex flex-row gap">
+    <div style="width: 24px; height: 24px;">
+
+    </div>
+    <mat-form-field style="width:80%;">
+      <input matInput type="text" placeholder="Add title" [(ngModel)]="event.title" formControlName="title">
+      <mat-error *ngIf="fg.controls['title'].invalid">title is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="flex flex-row gap center">
+    <mat-icon matPrefix>access_time</mat-icon>
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="start date" [(ngModel)]="event.when" formControlName="when" required>
+      <mat-error *ngIf="fg.controls['when'].invalid">date is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-row gap center">
+    <mat-icon matPrefix>notes</mat-icon>
+    <mat-form-field appearance="fill" style="width:100%">
+      <textarea matInput
+      formControlName="description"
+      [(ngModel)]="event.description"
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="2"
+      cdkAutosizeMaxRows="5"
+      placeholder="Add description"></textarea>
+      <mat-error *ngIf="fg.controls['description'].invalid">description is required</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  
+</mat-dialog-content>
+<mat-dialog-actions style="display:flex;flex-direction:row; justify-content:end">
+  <button mat-stroked-button (click)="save()" color="primary">
+    Save
+  </button>
+</mat-dialog-actions>
