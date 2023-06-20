@@ -33,3 +33,11 @@ docker build -t nginx-angular -f nginx.dockerfile .
 ## container
 # if you are on windows use environment variable for current working directory instead of pwd
 docker run -p 8080:80 -v ${pwd}/dist:/usr/share/nginx/html nginx-angular
+
+
+# let dialogRef = this.matDialog.open(NewEventDialogComponent,{
+#      width: '450px',
+# });
+#    dialogRef.afterClosed().subscribe(result=> {
+#      console.log("add event dialog closed");
+#    })

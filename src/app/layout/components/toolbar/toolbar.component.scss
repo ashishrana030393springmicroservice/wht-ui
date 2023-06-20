@@ -1,9 +1,43 @@
 $iconWidth: 56px;
-.flex{
-  display:flex;
-  flex-direction:row;
-  gap: 10px;
+.mat-toolbar{
+  position: fixed;
+  top:0;
+  left:0;
+  height:70px;
+  z-index:3;
   
+}
+.g_Na{
+  background-color: rgb(218,220,224);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+.w-full{
+  width: 100%;
+}
+.flex{
+  display:flex;  
+}
+.flex-row{
+  flex-direction: row;
+}
+.justify-center{
+  justify-content: center;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.align-items-start{
+  align-items: start;
+}
+.gap{
+  gap: 10px;
+}
+.flex-col{
+  flex-direction: column;
 }
 .mat-stroked-button{
   font-weight: 100;

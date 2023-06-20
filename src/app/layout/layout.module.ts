@@ -6,7 +6,6 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material.module';
-import { EventService } from './services/event.service';
 import { NewEventDialogComponent } from './components/new-event-dialog/new-event-dialog.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +31,7 @@ const routes=[
     ToolbarComponent,
     MainContentComponent,
     SideNavComponent,
-    NewEventDialogComponent
+    
   ],
   imports: [
     CommonModule,
@@ -42,6 +41,6 @@ const routes=[
     HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  providers:[EventService]
+  providers:[]
 })
 export class LayoutModule { }

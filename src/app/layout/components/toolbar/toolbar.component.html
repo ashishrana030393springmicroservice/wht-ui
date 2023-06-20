@@ -1,11 +1,21 @@
-<mat-toolbar class="flex flex-row">
-  <button mat-icon-button class="kamal-menu-toggle" aria-label="kamal-menu" (click)="toggleSideNav.emit()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <img src="../../../../assets/calendar_14_2x.png" height="34px" width="34px">
-  <h1 style="font-size: 20px; font-weight: 400">Calendar</h1>
-  <button mat-stroked-button><span class="font-weight: 100" [matTooltip]="today">Today</span></button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    
-  </button>
+<mat-toolbar class="flex justify-center align-items-start flex-col" color="primary">
+<div class="flex flex-row justify-between w-full">
+  <div class="flex flex-row gap w-full">
+    <button mat-icon-button class="kamal-menu-toggle" aria-label="kamal-menu" (click)="toggleSideNav.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="../../../../assets/calendar_14_2x.png" height="34px" width="34px">
+    <h1 style="font-size: 20px; font-weight: 400">Calendar</h1>
+    <button mat-stroked-button><span class="font-weight: 100" [matTooltip]="today">Today</span></button>
+  </div>
+  <div class="flex flex-row gap">
+    <button mat-stroked-button>
+      Login
+    </button>
+  </div>
+  <div>
+
+  </div>
+</div>
+<div class="g_Na"></div>
 </mat-toolbar>

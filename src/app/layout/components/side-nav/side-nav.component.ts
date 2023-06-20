@@ -2,7 +2,7 @@ import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/l
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewEventDialogComponent } from '../new-event-dialog/new-event-dialog.component';
-import { EventService } from '../../services/event.service';
+
 const SMALL_WIDTH_BREAKPOINT= 720;
 @Component({
   selector: 'app-side-nav',
@@ -12,7 +12,7 @@ const SMALL_WIDTH_BREAKPOINT= 720;
 export class SideNavComponent implements OnInit {
   isScreenSm:boolean = false;
   selected:any;
-  constructor(private eventService:EventService,private  breakPointObserver:BreakpointObserver, private matDialog:MatDialog) { }
+  constructor(private  breakPointObserver:BreakpointObserver, private matDialog:MatDialog) { }
 
   ngOnInit(): void {
     this.breakPointObserver.observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
@@ -31,8 +31,5 @@ export class SideNavComponent implements OnInit {
     })
     
   }
-  filterApplyEvent(data:any){
-    this.eventService.selectDate(data);
-    
-  }
+  
 }
