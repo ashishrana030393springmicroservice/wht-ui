@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiRoot: 'http://127.0.0.1:8080/',
+  stsAuthority: 'http://127.0.0.1:8080/',
+  clientRoot: 'http://127.0.0.1:4200/',
+  clientId:'axkdw-skdsfs-ksdfks-akdfks',
+  client_secret: "jskex-kwics-iecmw-aziec",
+  issuer: "http://127.0.0.1:8080",
+  openIdConfig: ".well-known/openid-configuration"
+
 };
 
 /*

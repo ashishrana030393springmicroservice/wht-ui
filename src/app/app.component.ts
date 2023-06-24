@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project-ecom';
+  isLoggedIn:boolean =false; 
+  constructor(private _authService:AuthService){
+    this._authService.loginChanged$.subscribe(loggedIn=>{
+      this.isLoggedIn = loggedIn;
+    })
+  }
+  ngOnInit(){
+    this._authService.isLoggedIn().then(loggedIn=>{
+      this.isLoggedIn = loggedIn;
+    })
+  }
+
+  toggle(){
+    
+  }
 }

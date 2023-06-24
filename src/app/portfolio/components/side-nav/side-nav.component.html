@@ -1,4 +1,8 @@
-<app-toolbar (toggleSideNav)="sidenav.toggle()" class="light-theme"></app-toolbar>
+<app-toolbar class="light-theme">
+  <button mat-icon-button class="kamal-menu-toggle" aria-label="kamal-menu" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</app-toolbar>
 <mat-sidenav-container class="app-sidenav-container">
   <mat-sidenav #sidenav class="app-sidenav" [mode]="isScreenSm? 'over':'side'" mat-elevation-z10 [opened]="!isScreenSm" >
     <!--Add Appointment button-->
