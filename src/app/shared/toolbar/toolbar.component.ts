@@ -31,4 +31,5 @@ export class ToolbarComponent implements OnInit {
   login() {
     this.authService.login();
   }
+  
 }

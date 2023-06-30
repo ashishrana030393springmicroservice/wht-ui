@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ProjectEcom</title>
+  <script src="/assets/js/oidc-client.min.js">
+    const stsSettings = {
+      authority: "http://127.0.0.1:8080/",
+      clientId:"axkdw-skdsfs-ksdfks-akdfks",
+      scope:"openid",
+      response_type:"code"
+    };
+    new Oidc.UserManager(stsSettings).signinSilentCallback().catch(error=> {
+      console.log(error)
+    });
+  </script>
+</head>
+
+</html>

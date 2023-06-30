@@ -26,7 +26,7 @@ export class AuthService {
       automaticSilentRenew: true,
       token_endpoint_auth_methods_supported: ['client_secret_basic'],
       silent_redirect_uri: `${environment.clientRoot}assets/silent-callback.html`,
-      //   post_logout_redirect_uri: `${environment.oauth2.stsAuthority}v2/logout?clientId=${environment.oauth2.clientId}&returnTo=${encodeURI(environment.oauth2.clientRoot)}signout-callback`,
+      post_logout_redirect_uri: `${environment.clientRoot}signout-callback`,
       metadata: {
         issuer: `${environment.stsAuthority}`,
         authorization_endpoint: `${environment.stsAuthority}oauth2/authorize`,

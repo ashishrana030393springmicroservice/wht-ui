@@ -1,1 +1,82 @@
-<p>about works!</p>
+<div class="hUjLdV" id="watch">
+  <div class="kPFgeE">
+    <img
+      src="../../../../assets/images/png/oauth2.png"
+      [@openClose2L]="expression ? 'open' : 'close'"
+      style="z-index: 98"
+      class="sc-1ij3rhy-2 ixxOne"
+    />
+    <img
+      src="../../../../assets/images/png/angular.png"
+      [@openClose1L]="expression ? 'open' : 'close'"
+      style="z-index: 99"
+      class="sc-1ij3rhy-2 ixxOne"
+    />
+    <img
+      src="../../../../assets/images/png/spring.png"
+      [@openClose]="expression ? 'open' : 'close'"
+      style="z-index: 100"
+      class="sc-1ij3rhy-2 ixxOne"
+    />
+    <img
+      src="../../../../assets/images/png/mysql.png"
+      [@openClose1R]="expression ? 'open' : 'close'"
+      style="z-index: 99"
+      class="sc-1ij3rhy-2 ixxOne"
+    />
+    <img
+      src="../../../../assets/images/png/docker.png"
+      [@openClose2R]="expression ? 'open' : 'close'"
+      style="z-index: 98"
+      class="sc-1ij3rhy-2 ixxOne"
+    />
+  </div>
+</div>
+<div style="height:100vh; padding: 200px 180px;" class="desktop">
+  <div style="display:flex;">
+    <div class="describe">
+      <div class="box" id="watcha" style="color: #9C56F6;">
+        <div class="title" >it's nice to meet you.</div>
+        <div class="description" style="color:#a169ea">
+          I am a fullstack web developer. 
+          I love to spend time learning new technologies. 
+        </div>
+      </div>
+      <div class="box" id="watchb" style="color:#BE211F">
+        <div class="title">angular is one of popular framework.</div>
+        <div class="description" style="color:#e04e4e">
+          This page is developed using angular. Angular material is used for styling.
+        </div>
+      </div>
+      <div class="box" id="watchc" style="color:#31A350">
+        <div class="title">spring is one of popular java frameworks.</div>
+        <div class="description" style="color:#5ae27f">
+          spring boot starter dependencies are awesome for quick development of websites.
+        </div>
+      </div>
+      <div class="box" id="watchd" style="color:#017BE5">
+        <div class="title">database & additional tech skills.</div>
+        <div class="description" style="color:#3093e5">
+          mysql, docker, typescript, html, css etc.
+        </div>
+      </div>
+    </div>
+    <div class="describe-image">
+      <div class="image-frame">
+        <div *ngIf="expressiona" class="image-bg" >
+         <img src="../../../../assets/images/png/kamal-fullstack.png">
+        </div>
+        <div *ngIf="expressionb" class="image-bg" >
+          <img src="../../../../assets/images/png/kamal-frontend.png">
+         </div>
+         <div *ngIf="expressionc" class="image-bg" >
+          <img src="../../../../assets/images/png/kamal-spring.png">
+         </div>
+         <div *ngIf="expressiond" class="image-bg" >
+          <img src="../../../../assets/images/png/additional.png">
+         </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
