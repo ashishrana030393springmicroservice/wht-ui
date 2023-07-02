@@ -1,0 +1,18 @@
+<div class="flex flex-row justify-between gap">
+  <mat-form-field appearance="fill" >
+    <mat-label>Month</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let month of months" [value]="month">{{month | titlecase}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" >
+    <mat-label>Day</mat-label>
+    <input matInput type="tel">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill"  >
+    <mat-label>Year</mat-label>
+    <input matInput type="tel">
+  </mat-form-field>
+</div>

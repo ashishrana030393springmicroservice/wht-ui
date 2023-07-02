@@ -7,6 +7,8 @@ import { HomeComponent } from './component/home/home.component';
 import { AboutComponent } from './component/about/about.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { MaterialModule } from '../shared/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DateModule } from '../shared/date/date.module';
 
 
 export const routes:Route[]=[
@@ -15,7 +17,9 @@ export const routes:Route[]=[
       {
         path: '', component: AboutComponent
       },
-      
+      {
+        path:'signup',component:SignUpComponent
+      }
     ]
   },
 ]
@@ -32,6 +36,8 @@ export const routes:Route[]=[
     ToolbarModule,
     CommonModule,
     MaterialModule,
+    ReactiveFormsModule,
+    DateModule,
     RouterModule.forChild(routes)
   ]
 })

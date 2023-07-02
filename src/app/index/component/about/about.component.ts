@@ -120,41 +120,82 @@ import {
   ],
 })
 export class AboutComponent implements OnInit {
-  expression:boolean=false
-  expressiona:boolean = false;
-  expressionb:boolean=false
-  expressionc:boolean=false
-  expressiond:boolean=false
+ expression:boolean =false; 
+
+  images=[
+    {
+      id:'watcha',
+      show:false,
+      color:{
+        main: '#9C56F6',
+        title:'#9C56F6',
+        description:'#a169ea'
+      },
+      src:"../../../../assets/images/png/kamal-fullstack.png",
+      title:"it's nice to meet you.",
+      description:"I am a fullstack web developer. I love to spend time learning new technologies."
+    },
+    {
+      id:'watchb',
+      show:false,
+      color:{
+        main: '#BE211F',
+        title:'#BE211F',
+        description:'#e04e4e'
+      },
+      src:"../../../../assets/images/png/kamal-frontend.png",
+      title:"angular is the best.",
+      description:"This page is developed using angular. Angular material is used for styling."
+    },
+    {
+      id:'watchc',
+      show:false,
+      color:{
+        main: '#31A350',
+        title:'#31A350',
+        description:'#5ae27f'
+      },
+      src:"../../../../assets/images/png/kamal-spring.png",
+      title:"spring is awesome.",
+      description:"spring boot starter dependencies are awesome for quick development of websites."
+    },
+    {
+      id:'watchd',
+      show:false,
+      color:{
+        main: '#017BE5',
+        title:'#017BE5',
+        description:'#3093e5'
+      },
+      src:"../../../../assets/images/png/additional.png",
+      title:"database & additional tech skills.",
+      description:"mysql, docker, typescript, html, css etc."
+    }
+  ]
   
   ob  = new IntersectionObserver(()=> {
     this.expression =true;
   });
 
   oba  = new IntersectionObserver(()=> {
-    this.expressiona =true;
-    this.expressionb =false;
-    this.expressionc =false;
-    this.expressiond =false;
+    this.images.forEach(obj=> obj.show =false)
+    this.images[0].show =true;
     
   },{threshold:1});
   
   obb  = new IntersectionObserver(()=> {
-    this.expressionb =true;
-    this.expressiona = false;
-    this.expressionc =false;
-    this.expressiond =false;
+    this.images.forEach(obj=> obj.show =false)
+    this.images[1].show =true;
+    
   },{threshold:1});
   obc  = new IntersectionObserver(()=> {
-    this.expressionc =true;
-    this.expressiona = false;
-    this.expressionb =false;
-    this.expressiond =false;
+    this.images.forEach(obj=> obj.show =false)
+    this.images[2].show =true;
+    
   },{threshold:1});
   obd  = new IntersectionObserver(()=> {
-    this.expressiond =true;
-    this.expressiona = false;
-    this.expressionb =false;
-    this.expressionc =false;
+    this.images.forEach(obj=> obj.show =false)
+    this.images[3].show =true;
   },{threshold:1});
  
   constructor() {

@@ -1,12 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ClientAuthInterceptor } from './client-auth.interceptor';
-
-
+import { NgModule } from '@angular/core';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
     CommonModule
   ],
@@ -16,6 +14,7 @@ import { ClientAuthInterceptor } from './client-auth.interceptor';
     //  useClass: ClientAuthInterceptor,
     //  multi: true
     // }
-   ]
+   ],
+   exports:[]
 })
 export class CoreModule { }
