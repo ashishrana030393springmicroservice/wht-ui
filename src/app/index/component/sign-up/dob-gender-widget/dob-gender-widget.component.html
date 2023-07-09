@@ -1,0 +1,22 @@
+<mat-progress-bar mode="indeterminate"  *ngIf="isRefreshing" style="position:absolute; top:0px; left:0px;width: 100%;"></mat-progress-bar>
+<div [class.content-loading]="isRefreshing">
+  <p>Basic information</p>
+  <p>Enter your birthday and gender</p>
+  <ng-container [formGroup]="form">
+    <div class="flex flex-col dob-container">
+      <mat-form-field appearance="standard" class="dob">
+        <mat-label class="dob-label">DOB</mat-label>
+        <date formControlName="dob"></date>
+        <mat-error *ngIf="form.get('dob')?.invalid">please enter a valid date</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option *ngFor="let value of gender" [value]="value">{{
+          value
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+</div>

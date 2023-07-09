@@ -1,0 +1,15 @@
+:host{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: stretch;
+}
+.content-loading{
+  opacity: 0.4;
+}
+.mat-progress-bar{
+  border-top-right-radius: 50px !important;
+  border-top-left-radius: 50px !important;
+}

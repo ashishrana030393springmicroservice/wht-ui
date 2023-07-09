@@ -1,0 +1,15 @@
+<div class="container flex flex-col align-center box0">
+  <div class="absolute-top-container">
+    <img src="../../../../assets/icons/wh?t.png" height="80px">
+  </div>
+  <div *ngIf="(step$ |async) as currentProgress" class="light-theme"  style="width: 60px; position:absolute; top:12px;right: 10px;">
+    <p class="progress-step">STEP: {{currentProgress}} /{{max}}</p>
+    <mat-progress-bar color="accent" [value]="((currentProgress -1) / max )* 100" mode="determinate"></mat-progress-bar>
+  </div>
+  <div class="body flex flex-col">
+    <ng-content></ng-content>
+  </div>
+  ,<div class="footer w-full flex flex-row justify-end">
+    <button *ngIf="(step$|async) as currentProgress" mat-stroked-button color="primary" [disabled]="!valid || refreshing" (click)="onNext(currentProgress)">{{currentProgress==4?'Finish':'Next'}}</button>
+  </div>
+</div>

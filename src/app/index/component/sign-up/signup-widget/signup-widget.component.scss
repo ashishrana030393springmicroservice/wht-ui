@@ -1,0 +1,34 @@
+:host{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.absolute-top-container{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background-color: #dedede69;
+  padding: 8px;
+  border-radius: 6px;
+}
+.container{
+  border-radius: 5px !important;
+  border: 1px solid #dadada;
+  padding: 90px 40px 40px 40px;
+  position:relative;
+}
+
+
+.progress-step{
+  margin: 0px;
+  padding:0px;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+button:disabled{
+  cursor:not-allowed;
+}

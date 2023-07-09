@@ -1,22 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { DateAdapter } from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { SignupWidgetService } from '../../service/signup-widget.service';
 
+export class CustomErrorMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: FormControl<any> | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    return !!control && control.dirty && control.invalid;
+  }
+}
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  providers:[
-    
-  ]
+  providers: [
+    {
+      provide: ErrorStateMatcher,
+      useClass: CustomErrorMatcher,
+    },
+    SignupWidgetService
+  ],
 })
-export class SignUpComponent implements OnInit {
-  gender:string[]=['MALE','FEMALE']
-  constructor() { }
+export class SignupComponent implements OnInit {
+  user = {
+    username: '',
+    dob: '',
+    gender: '',
+    firstName: '',
+    lastName: '',
+    password: '',
+  };
 
-  ngOnInit(): void {
-  }
-  chooseYearHandler(e:any){
-    console.log(e)
-  }
+  step$ = this.widgetService.step$;
 
+  constructor(private widgetService:SignupWidgetService) {}
+
+  ngOnInit(): void {}
 }

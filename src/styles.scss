@@ -2,6 +2,41 @@
 @use '@angular/material' as mat;
 @include mat.core();
 
+.flex{
+  display: flex;
+}
+.flex-col{
+  flex-direction: column;
+}
+.flex-row{
+  flex-direction: row;
+}
+.align-center{
+  align-items:center
+}
+.justify-end{
+  justify-content: end;
+}
+.justify-start{
+  justify-content: start;
+}
+.w-full{
+  width: 100%
+}
+
+.text-center{
+  text-align: center;
+}
+.text-start{
+  text-align: start;
+}
+.text-end{
+  text-align: end;
+}
+*{
+  box-sizing: border-box;
+}
+
 /* For use in src/lib/core/theming/_palette.scss */
 $md-light: (
   50 : #ffffff,
@@ -110,10 +145,18 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 app-sign-up{
+  .mat-form-field{
+    width: 300px !important;
+  }
   .mat-form-field-underline {
     width: 0% !important;
   }
   .mat-form-field-label{
     color: #dededa;
+  }
+}
+.dob{
+  .mat-form-field-wrapper {
+    height: 90px !important;
   }
 }
