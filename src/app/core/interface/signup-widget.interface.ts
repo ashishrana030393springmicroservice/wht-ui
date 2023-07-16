@@ -5,4 +5,5 @@ export interface SignupWidget extends Widget{
   isRefreshing:boolean;
   value:()=>any;
   valid:()=>boolean;
+  formGroup:()=>FormGroup
 }

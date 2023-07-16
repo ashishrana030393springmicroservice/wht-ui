@@ -1,0 +1,40 @@
+:host{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container{
+  
+  max-width:1200px;
+}
+.badge{
+ color: #FFFFFF;
+ background-color: #000;
+ border-radius: 5px;
+ width: 80px;
+ height: 30px;
+ padding: 5px 10px;
+ letter-spacing: 2px;
+ font-size: 12px;
+ text-transform:  uppercase;
+}
+.abs-position{
+  top:0px;
+}
+
+@media(max-width: 400px){
+  .flex-row{
+    flex-direction: column !important;
+  }
+  .flex-row-reverse{
+    flex-direction: column !important;
+  }
+  .badge{
+    display: none !important;
+  }
+  .margin{
+    margin: 10px 0px !important;
+  }
+}

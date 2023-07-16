@@ -40,12 +40,16 @@ export class PasswordWidgetComponent extends CommonFunction implements OnInit , 
   }
   value():any{
     const value = {
-      password: this.form.value.password
+      password: this.form.value.password,
+      confirm: this.form.value.confirm
     }
     return value;
   }
   valid():boolean{
     return this.form.valid;
+  }
+  formGroup():FormGroup{
+    return this.form;
   }
 }
 

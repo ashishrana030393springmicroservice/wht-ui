@@ -14,6 +14,7 @@ import { NameWidgetComponent } from './component/sign-up/name-widget/name-widget
 import { DobGenderWidgetComponent } from './component/sign-up/dob-gender-widget/dob-gender-widget.component';
 import { UsernameWidgetComponent } from './component/sign-up/username-widget/username-widget.component';
 import { PasswordWidgetComponent } from './component/sign-up/password-widget/password-widget.component';
+import { StepWiseInstructionModule } from '../shared/step-wise-instruction/step-wise-instruction.module';
 
 export const routes: Route[] = [
   {
@@ -51,6 +52,7 @@ export const routes: Route[] = [
     ReactiveFormsModule,
     FormsModule,
     DateModule,
+    StepWiseInstructionModule,
     RouterModule.forChild(routes),
   ],
 })

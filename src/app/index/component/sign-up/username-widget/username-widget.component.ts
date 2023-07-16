@@ -36,4 +36,7 @@ export class UsernameWidgetComponent
   valid():boolean{
     return this.form.valid;
   }
+  formGroup():FormGroup{
+    return this.form;
+  }
 }

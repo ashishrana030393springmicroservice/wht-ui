@@ -46,9 +46,12 @@ export class DobGenderWidgetComponent extends CommonFunction implements OnInit, 
     }
     return value;
   }
-  
+
   valid():boolean{
     return this.form.valid;
+  }
+  formGroup():FormGroup{
+    return this.form;
   }
 }
 

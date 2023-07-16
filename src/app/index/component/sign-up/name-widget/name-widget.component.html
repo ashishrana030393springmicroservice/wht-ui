@@ -4,16 +4,35 @@
   style="position: absolute; top: 0px; left: 0px; width: 100%"
 ></mat-progress-bar>
 <div class="flex flex-col" [class.content-loading]="isRefreshing">
-  <p>Just 4 steps away to create new account.</p>
-  <p>Enter your name</p>
+  <p style="font-size: 12px; letter-spacing: 0.04rem">
+    just 4 steps away to create new account.
+  </p>
+  <p style="font-size: 12px; letter-spacing: 0.04rem">Enter your name</p>
   <ng-container [formGroup]="form">
     <mat-form-field appearance="fill" color="primary">
       <mat-label>Firstname</mat-label>
       <input matInput type="text" formControlName="firstName" />
+      <mat-error *ngIf="form.get('firstName')?.hasError('required')">
+        <span><mat-icon>info</mat-icon> firstname is required</span>
+      </mat-error>
+
+      <mat-error *ngIf="form.get('firstName')?.hasError('serverError')">
+        <span><mat-icon>info</mat-icon>
+          {{ form.get("firstName")?.getError("serverError") }}
+        </span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" color="primary">
       <mat-label>Surname or Lastname</mat-label>
       <input matInput type="text" formControlName="lastName" />
+      <mat-error *ngIf="form.get('lastName')?.hasError('required')">
+        <span><mat-icon>info</mat-icon> lastname is required</span>
+      </mat-error>
+      <mat-error *ngIf="form.get('lastName')?.hasError('serverError')">
+        <span><mat-icon>info</mat-icon>
+          {{ form.get("lastName")?.getError("serverError") }}
+        </span>
+      </mat-error>
     </mat-form-field>
   </ng-container>
 </div>

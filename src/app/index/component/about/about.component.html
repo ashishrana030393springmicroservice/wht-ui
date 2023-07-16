@@ -32,14 +32,16 @@
     />
   </div>
 </div>
-<div >
+<div>
   <div class="desktop">
     <div class="describe">
       <ng-container *ngFor="let image of images">
         <div class="box" [id]="image.id" [style.color]="image.color.main">
-          <div class="title"  [style.color]="image.color.title">{{image.title}}</div>
+          <div class="title" [style.color]="image.color.title">
+            {{ image.title }}
+          </div>
           <div class="description" [style.color]="image.color.description">
-            {{image.description}}
+            {{ image.description }}
           </div>
         </div>
       </ng-container>
@@ -47,11 +49,10 @@
     <div class="describe-image">
       <div class="image-frame">
         <ng-container *ngFor="let image of images">
-          <div *ngIf="image.show" class="image-bg" >
-            <img [src]="image.src">
+          <div *ngIf="image.show" class="image-bg">
+            <img [src]="image.src" />
           </div>
         </ng-container>
-       
       </div>
     </div>
   </div>
@@ -59,25 +60,29 @@
     <ng-container *ngFor="let image of images">
       <div class="image-frame">
         <div class="image-bg">
-          <img [src]="image.src">
+          <img [src]="image.src" />
         </div>
       </div>
       <div class="describe">
-        <div class="box" >
+        <div class="box">
           <div class="title" [style.color]="image.color.title">
-            {{image.title}}
+            {{ image.title }}
           </div>
           <div class="description" [style.color]="image.color.description">
-            {{image.description}}
+            {{ image.description }}
           </div>
         </div>
       </div>
-      
-      
     </ng-container>
-    
   </div>
 </div>
-<div>
-
+<div></div>
+<div class="container">
+  <button mat-raised-button class="signup" [routerLink]="['signup']">
+    <img src="../../../../assets/images/png/signup.png">
+  </button>
 </div>
+<div class="container" style="justify-content: start;">
+  <app-step-wise-instruction [instructions]="stepsToSignUp"></app-step-wise-instruction>
+</div>
+

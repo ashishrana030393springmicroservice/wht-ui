@@ -1,0 +1,23 @@
+
+<ng-container *ngFor="let instruction of instructions; let even =even; let odd=odd; let first=first; let last =last; let index= index;">
+  <div [class.flex-row]="even" [class.flex-row-reverse]="odd" class="w-full justify-center flex margin padding container" >
+    <img [src]="instruction.img" style="max-width: 400px;">
+    <div class="w-full flex flex-col align-center justify-center relative"  [class.text-start]="odd" [class.text-end]="even">
+      
+      <!--Step No Ball-->
+      <div class="absolute top" [class.left]="odd" [class.right]="even"  >
+        <div class="badge" [class.text-end]="even" [class.text-start]="odd">
+          Step#{{index+1}}
+        </div>
+      </div>
+      <div class="flex flex-col w-full" >
+        <ng-container *ngFor="let description of instruction.descriptions">
+          <div class="w-full items-center text-center flex flex-col w-full" >
+            {{description}}
+          </div>
+        </ng-container>
+      </div>
+    
+    </div>
+  </div>
+</ng-container>

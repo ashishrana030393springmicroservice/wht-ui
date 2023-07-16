@@ -19,10 +19,21 @@ export class SignupWidgetService {
     this._step.next(this._current);
   }
 
+  validatePersonalDetails(user:UserRegistration){
+    return this.httpClient.post(environment.apiRoot + "validatepersonaldetails", {firstName:user.firstName, lastName:user.lastName});
+  }
+  validateBasicInfo(user:UserRegistration){
+    return this.httpClient.post(environment.apiRoot +"validatebasicinfo", {dob:user.dob, gender:user.gender});
+  }
+  validateUsername(user:UserRegistration){
+    return this.httpClient.post(environment.apiRoot + "validateusername", {username: user.username})
+  }
+
   complete(user: UserRegistration): Observable<UserRegistration> {
     return this.httpClient.post<UserRegistration>(
       environment.apiRoot + 'sign-up',
       user
     );
   }
+
 }

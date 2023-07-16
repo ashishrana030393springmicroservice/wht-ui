@@ -120,7 +120,38 @@ import {
   ],
 })
 export class AboutComponent implements OnInit {
- expression:boolean =false; 
+expression:boolean =false; 
+stepsToSignUp=[
+  {
+    show:false,
+    img: '../../../../assets/images/png/htsu-name.png',
+    descriptions:[
+      "Enter your firstname and surname (or lastname).",
+      "click next button to fill basic information."
+    ] 
+  },
+  {
+    show:false,
+    img: '../../../../assets/images/png/htsu-basicinfo.png',
+    descriptions:[
+      "Fill the basic information."
+    ] 
+  },
+  {
+    show:false,
+    img: '../../../../assets/images/png/htsu-username.png',
+    descriptions:[
+      "Specify how you'll sign in."
+    ] 
+  },
+  {
+    show:false,
+    img: '../../../../assets/images/png/htsu-password.png',
+    descriptions:[
+      "Create a strong password."
+    ] 
+  }
+]
 
   images=[
     {

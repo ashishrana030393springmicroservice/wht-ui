@@ -13,6 +13,8 @@ import { PasswordWidgetComponent } from '../password-widget/password-widget.comp
 import { UsernameWidgetComponent } from '../username-widget/username-widget.component';
 import { User } from 'oidc-client';
 import { UserRegistration } from 'src/app/core/models/user-registration.model';
+import { EMPTY, EmptyError, catchError, of } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-signup-widget',
@@ -42,32 +44,70 @@ export class SignupWidgetComponent implements OnInit {
     if (this.signupWidget instanceof NameWidgetComponent) {
       this.user = { ...this.user, ...this.signupWidget.value() };
       if (this.signupWidget.valid()) {
-        setTimeout(() => {
+        this.widgetService.validatePersonalDetails(this.user)
+        .pipe(catchError(err=>{
+          if(this.signupWidget){
+            this.signupWidget.isRefreshing = false;
+            if(err.status==400){
+              this.setError(this.signupWidget.formGroup(),err.error)
+            }
+          }
+          return EMPTY;
+        }))
+        .subscribe(res=> {
           this.widgetService.next();
-        }, 1000);
+        })
+        
       }
     }
     if (this.signupWidget instanceof DobGenderWidgetComponent) {
       this.user = { ...this.user, ...this.signupWidget.value() };
       if (this.signupWidget.valid()) {
-        setTimeout(() => {
+        this.widgetService.validateBasicInfo(this.user)
+        .pipe(catchError(err=>{
+          if(this.signupWidget){
+            this.signupWidget.isRefreshing = false;
+            if(err.status==400){
+              this.setError(this.signupWidget.formGroup(),err.error)
+            }
+          }
+          return EMPTY;
+        })).subscribe(res=> {
           this.widgetService.next();
-        }, 1000);
+        })
+        
       }
     }
 
     if (this.signupWidget instanceof UsernameWidgetComponent) {
       this.user = { ...this.user, ...this.signupWidget.value() };
       if (this.signupWidget.valid()) {
-        setTimeout(() => {
-          this.widgetService.next();
-        }, 1000);
+        this.widgetService.validateUsername(this.user)
+        .pipe(catchError(err=> {
+          if(this.signupWidget){
+            this.signupWidget.isRefreshing = false;
+            if(err.status==400){
+              this.setError(this.signupWidget.formGroup(),err.error)
+            }
+          }
+          return EMPTY;
+        })).subscribe(res=> {
+          this.widgetService.next()
+        })
       }
     }
     if (this.signupWidget instanceof PasswordWidgetComponent) {
       this.user = { ...this.user, ...this.signupWidget.value() };
       // api call
-      this.widgetService.complete(this.user).subscribe(res=> {
+      this.widgetService.complete(this.user).pipe(catchError(err=>{
+        if(this.signupWidget){
+          this.signupWidget.isRefreshing = false;
+          if(err.status==400){
+            this.setError(this.signupWidget.formGroup(),err.error)
+          }
+        }
+        return EMPTY;
+      })).subscribe(res=> {
         // user regisration success page
       });
     }
@@ -79,5 +119,22 @@ export class SignupWidgetComponent implements OnInit {
 
   get refreshing(): boolean | undefined {
     return this.signupWidget?.isRefreshing;
+  }
+
+  setError(form:FormGroup, error:any){
+    const keys:string[] = Object.keys(error);
+    for(let key of keys){
+      console.log(error)
+      console.log(key)
+      let msgs: string[] = error[key];
+      let ssErrorMsg='';
+      for(let i =0; i<msgs.length; i++){
+        let msg = msgs[i];
+        if(i!=msgs.length -2) msg = msg +",";
+        ssErrorMsg += msg
+        //form.reset();
+      }
+      form.get(key)?.setErrors({serverError: ssErrorMsg})
+    }
   }
 }

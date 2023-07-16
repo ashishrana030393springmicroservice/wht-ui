@@ -17,8 +17,8 @@ import { SIGNUP_WIDGET } from 'src/app/core/constant/signup-widget.token';
 })
 export class NameWidgetComponent extends CommonFunction implements OnInit, SignupWidget {
   form: FormGroup = this.fb.group({
-    firstName: [, Validators.compose([Validators.required])],
-    lastName: [, Validators.compose([Validators.required])],
+    firstName: [, Validators.compose([Validators.required, Validators.minLength(1)])],
+    lastName: [, Validators.compose([Validators.required, Validators.minLength(1)])],
   });
 
   constructor(private fb: FormBuilder) {
@@ -30,6 +30,10 @@ export class NameWidgetComponent extends CommonFunction implements OnInit, Signu
   }
   valid():boolean{
     return this.form.valid;
+  }
+
+  formGroup():FormGroup{
+    return this.form;
   }
 
   ngOnInit(): void {}

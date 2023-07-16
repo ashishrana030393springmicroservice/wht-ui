@@ -1,16 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 @include mat.core();
-
+.relative{
+  position: relative;
+}
+.absolute{
+  position:absolute;
+}
+.right{
+  right:0px;
+}
+.top{
+  top:0px;
+}
+.left{
+  left:0px;
+}
+.bottom{
+  bottom: 0;
+}
+.grid{
+  display: grid;
+}
+.grid-template-rows-2{
+  grid-template-rows: 1fr 1fr;
+}
+.grid-template-cols-2{
+  grid-template-columns: 1fr 1fr;
+}
+.gap-10{
+ gap: 10px;
+}
+.margin{
+  margin: 200px 0px;
+}
+.padding{
+  padding: 0px 20px;
+}
 .flex{
   display: flex;
 }
 .flex-col{
   flex-direction: column;
 }
+.flex-col-reverse{
+  flex-direction: column-reverse;
+}
 .flex-row{
   flex-direction: row;
 }
+.flex-row-reverse{
+  flex-direction: row-reverse;
+}
+
 .align-center{
   align-items:center
 }
@@ -20,8 +62,14 @@
 .justify-start{
   justify-content: start;
 }
+.justify-center{
+  justify-content: center;
+}
 .w-full{
   width: 100%
+}
+.h-full{
+  height: 100%;
 }
 
 .text-center{
