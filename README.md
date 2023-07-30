@@ -41,3 +41,8 @@ docker run -p 8080:80 -v ${pwd}/dist:/usr/share/nginx/html nginx-angular
 #    dialogRef.afterClosed().subscribe(result=> {
 #      console.log("add event dialog closed");
 #    })
+
+firbase
+npm install -g firebase-tools@11
+firebase projects:create --display-name aboutio
+ng add @anuglar/fire

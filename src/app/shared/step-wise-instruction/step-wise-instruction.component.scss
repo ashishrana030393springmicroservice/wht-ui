@@ -24,7 +24,8 @@
   top:0px;
 }
 
-@media(max-width: 400px){
+
+@media(max-width: 500px){
   .flex-row{
     flex-direction: column !important;
   }
@@ -37,4 +38,21 @@
   .margin{
     margin: 10px 0px !important;
   }
+ 
+}
+@media(max-width: 500px){
+  .absolute{
+    position: relative !important;
+    align-items: center;
+  }
+  
+}
+.mat-icon-button{
+  width: 70px;
+  height: 70px;
+  border: 0.5px solid #dadada;
+}
+.mat-icon-img{
+  width: 40px;
+  height: 40px;
 }

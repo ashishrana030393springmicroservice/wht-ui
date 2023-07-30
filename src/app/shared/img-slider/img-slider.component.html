@@ -1,0 +1,20 @@
+<div class="relative" [ngStyle]="{'width': unit=='px'? width+'px': width+'%', height: unit=='px'? height+'px': height+'%'}">
+  <aside class="absolute left">
+    <button mat-icon-button (click)="previous()" [disabled]="current==start">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+  </aside>
+  <main class="relative">
+    <ng-container *ngFor="let img of images;let i=index;" >
+      <figure class="instruction absolute" *ngIf="i==current">
+        <img [src]="img" />
+      </figure>
+    </ng-container>
+  </main>
+  <aside class="absolute right">
+    <button mat-icon-button (click)="next()" [disabled]="current==end">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    
+  </aside>
+</div>

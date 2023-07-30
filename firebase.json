@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "project-ecom",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

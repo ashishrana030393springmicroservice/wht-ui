@@ -1,0 +1,33 @@
+<div class="flex flex-col padding margin align-center">
+  
+  <h1 class="mt-6 bold text-center">Request a Callback</h1>
+  <p class="text-center p">
+    <span style="color:#FAFAFA !important;letter-spacing: 4px; font-family: 'Courier New', Courier, monospace; font-weight: bolder;">WH<span style="border:1px solid #dadada;border-radius: 50%;padding:2px 1px 2px 3px; margin-right:3px;">?</span>T</span>
+    Can reach you in next 24 hours to understand your needs and to give you best deals and discount.
+  </p>
+  <form style="position:relative;" [formGroup]="fg">
+    <div class="absolute top left ribbon ribbon-top-left" >
+      <span><img src="../../../assets/images/png/whatsapp.png" width="30%"></span>
+    </div>
+    <div style="color:#000 !important;position:absolute;letter-spacing: 4px; top:20px; font-family: 'Courier New', Courier, monospace; font-weight: bolder;">WH<span style="border:1px solid #dadada;border-radius: 50%;padding:2px 1px 2px 3px; margin-right:3px;">?</span>T</div>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field id="phone-form-field" appearance="outline" class="w-full">
+      <input id="phone" matInput type="tel" formControlName="contactNumber"  >
+      <mat-error *ngIf="this.fg.get('contactNumber')?.hasError('pattern')">invalid phonenumber</mat-error>
+      <button mat-icon-button matSuffix (click)="process()">verify</button>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="6" formControlName="description"></textarea>
+    </mat-form-field>
+    
+    <button mat-stroked-button color="primary" class="w-full" (click)="submit()">Submit</button>
+  </form>
+</div>

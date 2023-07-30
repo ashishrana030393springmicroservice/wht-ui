@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng deploy"
   },
   "private": true,
   "dependencies": {
@@ -15,11 +16,13 @@
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
     "@angular/core": "^14.2.0",
+    "@angular/fire": "^7.6.1",
     "@angular/forms": "^14.2.0",
     "@angular/material": "^13.0.0",
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "firebase-tools": "^12.4.6",
     "moment": "^2.29.4",
     "oidc-client": "^1.11.5",
     "rxjs": "~7.5.0",

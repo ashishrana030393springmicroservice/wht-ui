@@ -15,6 +15,7 @@ import { DobGenderWidgetComponent } from './component/sign-up/dob-gender-widget/
 import { UsernameWidgetComponent } from './component/sign-up/username-widget/username-widget.component';
 import { PasswordWidgetComponent } from './component/sign-up/password-widget/password-widget.component';
 import { StepWiseInstructionModule } from '../shared/step-wise-instruction/step-wise-instruction.module';
+import { ContactModule } from '../shared/contact/contact.module';
 
 export const routes: Route[] = [
   {
@@ -53,6 +54,7 @@ export const routes: Route[] = [
     FormsModule,
     DateModule,
     StepWiseInstructionModule,
+    ContactModule,
     RouterModule.forChild(routes),
   ],
 })

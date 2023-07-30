@@ -8,6 +8,10 @@ import { CoreModule } from './core/core.module';
 import { SigninRedirectCallbackComponent } from './signin-redirect-callback/signin-redirect-callback.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarModule } from './shared/toolbar/toolbar.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { ToolbarModule } from './shared/toolbar/toolbar.module';
     MaterialModule,
     CoreModule,
     HttpClientModule,
-    ToolbarModule
+    ToolbarModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-<div class="hUjLdV" id="watch">
+<div class="hUjLdV" id="watch" style="margin-top:-100px">
   <div class="kPFgeE">
     <img
       src="../../../../assets/images/png/oauth2.png"
@@ -77,12 +77,23 @@
   </div>
 </div>
 <div></div>
-<div class="container">
+<div class="container" style="flex-direction: column;" >
   <button mat-raised-button class="signup" [routerLink]="['signup']">
     <img src="../../../../assets/images/png/signup.png">
   </button>
+
+  <div class="flex flex-col w-full" style="justify-content: start;">
+    <ng-container *ngFor="let instruction of stepsToSignUp; let even =even; let odd=odd; let first=first; let last =last; let index= index;">
+      <app-step-wise-instruction (next$)="next($event)" [instruction]="instruction" [index]="index" [size]="stepsToSignUp.length"></app-step-wise-instruction>
+    </ng-container>
+  </div>
 </div>
-<div class="container" style="justify-content: start;">
-  <app-step-wise-instruction [instructions]="stepsToSignUp"></app-step-wise-instruction>
+
+<div class="container" >
+ 
+</div>
+
+<div class="container contact" >
+  <app-contact></app-contact>
 </div>
 

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 @include mat.core();
+@import './app/shared/contact/contact.theme.scss';
 .relative{
   position: relative;
 }
@@ -32,8 +33,9 @@
  gap: 10px;
 }
 .margin{
-  margin: 200px 0px;
+  margin: 80px 0px;
 }
+
 .padding{
   padding: 0px 20px;
 }
@@ -202,6 +204,9 @@ app-sign-up{
   .mat-form-field-label{
     color: #dededa;
   }
+}
+app-contact{
+  @include contact-form-styles();
 }
 .dob{
   .mat-form-field-wrapper {

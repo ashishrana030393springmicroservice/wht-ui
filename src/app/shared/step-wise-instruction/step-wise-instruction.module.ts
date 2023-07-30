@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepWiseInstructionComponent } from './step-wise-instruction.component';
+import { MaterialModule } from '../material.module';
+import { ImgSliderModule } from '../img-slider/img-slider.module';
 
 
 
@@ -9,7 +11,9 @@ import { StepWiseInstructionComponent } from './step-wise-instruction.component'
     StepWiseInstructionComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    ImgSliderModule
   ],
   exports:[
     StepWiseInstructionComponent

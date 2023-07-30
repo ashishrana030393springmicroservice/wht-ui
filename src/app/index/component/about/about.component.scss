@@ -214,9 +214,10 @@ overflow: hidden;
 
   .signup{
     --radius: 5px;
-    position: absolute;
+    //position: absolute;
     display: flex;
     flex-direction: row;
+    box-shadow: 0px;
     width: 250px;
     padding: 0px !important;
     margin: 0px !important;
@@ -235,9 +236,19 @@ overflow: hidden;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  margin: 100px 0px;
+  margin: 80px 0px 40px 0px;
 }
-
+.contact{
+  min-height: 600px;
+  background-color: #000;
+  justify-content: center;
+  align-items: start;
+}
+.mat-raised-button{
+  box-shadow: none !important;
+  border-right: 1px solid;
+  border-left: 1px solid;
+}
 
 
 

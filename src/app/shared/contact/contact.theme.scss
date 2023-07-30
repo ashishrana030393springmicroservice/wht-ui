@@ -1,0 +1,8 @@
+@mixin contact-form-styles(){
+  #phone-form-field .mat-form-field-label{
+    opacity: 0 !important;
+  }
+  #phone-form-field .mat-form-field-label{
+    opacity: 1 !important;
+  }
+}

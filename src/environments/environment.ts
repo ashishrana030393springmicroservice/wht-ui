@@ -3,6 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  firebase: {
+    projectId: 'aboutio',
+    appId: '1:1011214203552:web:283bb5ab43609efa17e7c5',
+    storageBucket: 'aboutio.appspot.com',
+    apiKey: 'AIzaSyB0aICs1eOOBk7t5zY5hQk2W1mciswof4U',
+    authDomain: 'aboutio.firebaseapp.com',
+    messagingSenderId: '1011214203552',
+  },
   production: false,
   apiRoot: 'http://127.0.0.1:8080/',
   stsAuthority: 'http://127.0.0.1:8080/',

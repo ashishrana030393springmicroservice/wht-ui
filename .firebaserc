@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "aboutio": {
+      "hosting": {
+        "project-ecom": [
+          "aboutio"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "aboutio"
+  }
+}
