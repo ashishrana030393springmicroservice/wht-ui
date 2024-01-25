@@ -17,6 +17,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
   declarations: [
     AppComponent,
     SigninRedirectCallbackComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,193 @@
+<div class="host-container">
+  <div style="position:relative;">
+    <img style="float:left;margin:10px" src="../../../../assets/images/svg/Junit5.svg" width="100px">
+    <h1>Integration testing in springboot application</h1>
+  </div>
+  <div class="child-container">
+    <p>Writing unit tests for Spring applications is no different from writing them for any other Java application. By default, any Spring project created from Spring Initializr contains the spring-boot-starter-test dependency, which imports testing
+      libraries like JUnit 5, Mockito, and AssertJ into the project. </p>
+    <code>
+
+      @Getter<br>
+      @Setter<br>
+      @Entity<br>
+      @AllArgsConstructor<br>
+      @NoArgsConstructor<br>
+      @ToString <br>
+      @Table(name="books")<br>
+      public class Book extends AuditId&#123;<br>
+      &nbsp;&nbsp;@NotBlank(message = "The book isbn must be defined")<br>
+      &nbsp;&nbsp;@Pattern(regexp = "^([0-9]&#123;10&#125;|[0-9]&#123;13&#125;)",<br>
+      &nbsp;&nbsp;message = "the isbn format must be valid")
+      &nbsp;&nbsp;String isbn;<br>
+      &nbsp;&nbsp;@NotBlank(message = "the book title must be defined")<br>
+      &nbsp;&nbsp;String title;<br>
+      &nbsp;&nbsp;@NotBlank(message = "the book author must be defined")<br>
+      &nbsp;&nbsp;String author;<br>
+      &nbsp;&nbsp;@NotNull(message = "the book price must be defined")<br>
+      &nbsp;&nbsp;@Positive(message = "the book price must be greater than zero.")<br>
+      &nbsp;&nbsp;Double price;<br>
+      &nbsp;&nbsp;@Version<br>
+      &nbsp;&nbsp;int version;<br>
+&nbsp;
+      public static Book of(String isbn, String title, String author, Double price)&#123;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return new Book(isbn,title,author,price,0);<br>
+    &nbsp;&nbsp;&#125;<br>
+&#125;<br>
+      <br>
+      <br>
+
+      <h1>JUnit test cases</h1>
+
+
+      private static Validator validator;<br>
+      @BeforeAll <br>
+      static void setUp()&#123;<br>
+      &nbsp;ValidatorFactory factory = Validation.buildDefaultValidatorFactory();<br>
+      &nbsp;validator = factory.getValidator();<br>
+      &#125;<br>
+
+      @Test<br>
+      void whenIsbnDefinedButIncorrectThenValidationFails()&#123; <br>
+      &nbsp;var book = new Book("a234567890", "Title", "Author", 9.90);<br>
+      &nbsp;Set&lt;ConstraintViolation&lt;Book&gt;&gt; violations = validator.validate(book);<br>
+      &nbsp;assertThat(violations).hasSize(1);<br>
+      &nbsp;assertThat(violations.iterator().next().getMessage())<br>
+      &nbsp;.isEqualTo("The ISBN format must be valid.");<br>
+      &#125;
+    </code>
+    <div class="margin-space">
+      <h1>@SpringBootTest</h1>
+      <p>
+        Integration tests cover the interactions among software components, and in Spring they require an application context to be defined. The <span class="bold">spring-boot-starter-test</span> dependency also imports the test utilities from Spring Framework and Spring Boot.
+      </p>
+      <p>
+        Spring Boot offers a powerful <span class="bold">@SpringBootTest</span> annotation that you
+        can use on a test class to bootstrap an application context automatically when running tests. The configuration used to create the context can be customized if needed. Otherwise, the class annotated with <span class="bold">@SpringBootApplication</span> will become the configuration source
+        for component scanning and properties, including the usual auto- configuration provided by Spring Boot.
+      </p>
+      <p>
+        When working with web applications, you can run tests on a mock web environment or a running server. You can configure that by defining a value for the webEnvironment attribute that the <span class="bold">@SpringBootTest</span> annotation provides.
+      </p>
+      <p>
+        When using a mock web environment, you can rely on the <span class="bold">MockMvc</span> object to send HTTP requests to the application and check their results. For environments with a running server, the <span class="bold">TestRestTemplate</span> utility lets you perform REST calls to an application running on an actual server. By inspecting the HTTP responses, you can verify that the API works as intended.
+      </p>
+
+      <table>
+        <th>Web environment option</th>
+        <th>Description</th>
+        <tr>
+          <td>MOCK</td>
+          <td>Creates a web application context with a mock servlet container. This is default option.</td>
+        </tr>
+        <tr>
+          <td>RANDOM_PORT</td>
+          <td>Creates a web application context with a Servlet container listening on a random port.</td>
+        </tr>
+        <tr>
+          <td>DEFINED_PORT</td>
+          <td>Creates a web application context with a Servlet container listening on the port defined through the server.port property.</td>
+        </tr>
+        <tr>
+          <td>NONE</td>
+          <td>Creates an application context without a Servlet container.</td>
+        </tr>
+      </table>
+       
+      <p class="margin-space">
+        <span class="bold">@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)</span>
+        This annotation is used to specify that we’re bootstrapping the whole Spring Boot application for the test, but with a random server port.
+        Depending on the application’s size, loading a full application context with auto-configuration for all integration tests might be too much. Spring Boot has a convenient feature (enabled by default) to cache the context, so that it’s re-used in all test classes that are annotated with @SpringBootTest
+        and the same configuration. Test execution time matters, so Spring Boot is fully equipped to run integration tests by loading only the parts of the application that are needed.
+      </p>
+      <div class="margin-space"></div>
+      <code>
+        import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;<br>
+        import org.springframework.boot.test.mock.mockito.MockBean;<br>
+        import org.springframework.test.web.servlet.MockMvc;<br>
+        import static org.mockito.BDDMockito.given;<br>
+        import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;<br>
+        import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;<br>
+        <br>
+        @WebMvcTest(BookController.class)<br>
+        class BookControllerMvcTests &#123;<br>
+        @Autowired<br>
+        private MockMvc mockMvc;<br>                                                  
+        @MockBean<br>
+        private BookService bookService;<br>
+        @Test<br>
+        void whenGetBookNotExistingThenShouldReturn404() throws Exception&#123;<br>
+        &nbsp;&nbsp;String isbn = "73737313940";<br>
+        &nbsp;&nbsp;given(bookService.viewBookDetails(isbn))<br>
+        &nbsp;&nbsp;.willThrow(BookNotFoundException.class);<br>
+        &nbsp;&nbsp;mockMvc<br>
+        &nbsp;&nbsp;.perform(get("/books/" + isbn))<br>
+        &nbsp;&nbsp;.andExpect(status().isNotFound());<br>
+        &#125;<br>
+      &#125;<br>
+      </code>
+      <ol>
+        <li>
+          <span class="bold">MockMvc</span> is a utility class that lets you test web endpoints without loading a server like Tomcat.
+        </li>
+        <li>
+          <span class="bold">Slice tests</span> run against an application context containing only the parts of the configuration requested by that application slice. In the case of collaborating beans outside the slice, such as the BookService class, we use mocks.
+        </li>
+        <li>
+          <span class="bold">Mocks</span> created with the <span class="bold">@MockBean</span> annotation are different from standard mocks (for example, those created with <span class="bold">Mockito</span>) since the class is not only mocked, but the mock is also included in the application context. Whenever the context is asked to autowire that bean, it automatically injects the mock rather than the actual implementation.
+        </li>
+      </ol>
+      <div class="margin-space">
+        <h1>Configuring Testcontainers for mysql</h1>
+        <code>
+          ext &#123;<br>
+            &nbsp; set('testcontainersVersion', "1.18.3")   ❶<br>
+          &#125;<br>
+          dependencies&#123;<br>
+            &nbsp;testImplementation 'org.testcontainers:mysql:1.16.0' ❷<br> 
+          &#125;<br>
+          dependencyManagement &#123;<br>
+            &nbsp;imports &#123;<br>
+              &nbsp;&nbsp;mavenBom "org.testcontainers:testcontainers-bom:$&#123;testcontainersVersion&#125;"  ❸ <br> 
+              &nbsp;&#125;<br>
+            &#125;<br>
+        </code>
+        <div class="margin-space">
+          <ol>
+            <li>Defines the Testcontainers version to use</li>
+            <li>Provides container management features for mysql databases </li>
+            <li>BOM (bill of materials) for Testcontainers dependency management</li>
+          </ol>
+          <p>
+            When running tests, we want the application to use a Mysql instance provided by Testcontainers rather than the one we configured earlier via the <span class="bold">spring.datasource.url</span> property. We can overwrite that value in a new <span class="bold">application-integration.yml</span> file created under <span class="bold">src/test/resources</span>. Any property defined in this file will take precedence over the main one when the integration profile is enabled. In this case, we’ll overwrite
+            the value for spring.datasource.url following a format defined by Testcontainers.
+          </p>
+          <code>
+            spring:<br>
+            &nbsp;&nbsp;datasource:<br>
+            &nbsp;&nbsp;&nbsp;url: jdbc:tc:mysql:5.7  ❶
+          </code>
+          <ol>
+            <li>Identifies the mysql module in Testcontainers. “5.7” is the version of Mysql to use.</li>
+          </ol>
+          <p>
+            When the integration
+profile is enabled, Spring Boot will use the Mysql container instantiated by Testcontainers.
+          </p>
+          <code>
+            @ActiveProfiles("integration") <br>
+            public class CatalogServiceApplicationTest&#123;<br>
+            &nbsp;&nbsp;...<br>
+            &#125;<br>
+          </code>
+        </div>
+
+      </div>
+      
+    </div>
+    
+  </div>
+  <div class="child-container"></div>
+  
+  
+</div>

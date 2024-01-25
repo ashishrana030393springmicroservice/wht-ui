@@ -1,0 +1,19 @@
+<div>
+  <h1>Mutiple authentication provider</h1>
+  <p>http.httpBasic().and().authenticationManager()  It overrides authentication manager completely that httpBasic() set up </p>
+  <p>http.httpBasic().and().authenticationProvider() It doesn't override authentication provider instead it adds a new authentication provider to a collection</p>
+  <div>
+    <h2>OncePerRequestFilter used to implement ApiKeyFilter</h2>
+    <p>doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) : filerchain.doFilter(req,res)</p>
+
+    <p>ApiKeyAuthentication using Authentication Contract:</p>
+    <p>isAuthenticated()</p>
+    <p>setAuthenticated(boolean authenticated)</p>
+    <p>getAuthorities()</p>
+    <p>getCredentials()</p>
+
+
+
+  </div>
+  
+</div>

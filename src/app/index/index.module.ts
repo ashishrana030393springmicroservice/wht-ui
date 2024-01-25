@@ -4,7 +4,7 @@ import { IndexComponent } from './index.component';
 import { Route, RouterModule } from '@angular/router';
 import { ToolbarModule } from '../shared/toolbar/toolbar.module';
 import { HomeComponent } from './component/home/home.component';
-import { AboutComponent } from './component/about/about.component';
+import { AboutComponent } from './component/extras/about/about.component';
 import { SignupComponent } from './component/sign-up/sign-up.component';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,11 @@ import { UsernameWidgetComponent } from './component/sign-up/username-widget/use
 import { PasswordWidgetComponent } from './component/sign-up/password-widget/password-widget.component';
 import { StepWiseInstructionModule } from '../shared/step-wise-instruction/step-wise-instruction.module';
 import { ContactModule } from '../shared/contact/contact.module';
+import { QuotesModule } from '../shared/quotes/quotes.module';
+import { DockerBlogComponent } from './component/extras/docker-blog/docker-blog.component';
+import { GithubActionsBlogComponent } from './component/extras/github-actions-blog/github-actions-blog.component';
+import { Junit5Component } from './component/extras/junit5/junit5.component';
+import { SpringSecurityComponent } from './component/extras/spring-security/spring-security.component';
 
 export const routes: Route[] = [
   {
@@ -25,6 +30,18 @@ export const routes: Route[] = [
       {
         path: '',
         component: AboutComponent,
+      },
+      {
+        path:'blog',
+        component:DockerBlogComponent
+      },
+      {
+        path:'github-actions',
+        component:GithubActionsBlogComponent
+      },
+      {
+        path:'junit5',
+        component: Junit5Component
       },
       {
         path: 'signup',
@@ -45,6 +62,10 @@ export const routes: Route[] = [
     DobGenderWidgetComponent,
     UsernameWidgetComponent,
     PasswordWidgetComponent,
+    DockerBlogComponent,
+    GithubActionsBlogComponent,
+    Junit5Component,
+    SpringSecurityComponent,
   ],
   imports: [
     ToolbarModule,
@@ -54,7 +75,9 @@ export const routes: Route[] = [
     FormsModule,
     DateModule,
     StepWiseInstructionModule,
+    QuotesModule,
     ContactModule,
+
     RouterModule.forChild(routes),
   ],
 })
